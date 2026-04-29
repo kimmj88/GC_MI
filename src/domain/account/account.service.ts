@@ -8,13 +8,9 @@ import {
 } from 'typeorm';
 
 import { Account } from 'src/entities/account.entity';
-import { AccountDto, AccountSearchDto } from '@domain/account/account.dto';
-import { ResponseSearchDto } from '@common/dto/searchDTO';
-import { $paginateArray } from '@util/paginateArray';
-import { makeCondition } from '@util/makeQuery';
+import { AccountDto } from '@domain/account/account.dto';
 
 import { Observable, Subject, filter, map } from 'rxjs';
-import { getAccountPayload } from '@util/decode-token.util';
 
 @Injectable()
 export class AccountService {
@@ -25,16 +21,27 @@ export class AccountService {
     @InjectRepository(Account) private accountRepository: Repository<Account>,
   ) {}
 
+  //Default Service
   all(): Promise<Account[]> {
     return this.accountRepository.find({});
   }
 
-  list(accountReq: AccountDto): Promise<Account[]> {
-    return this.accountRepository.find({
-      where: [
-        { name: ILike(`%${accountReq.name}%`) },
-        { email: ILike(`%${accountReq.email}%`) },
-      ],
+  async create(body: AccountDto): Promise<Account> {
+    const data = await this.accountRepository.save(body);
+
+    return data;
+  }
+
+  //Optional Service
+  async login(body: AccountDto): Promise<boolean> {
+    const existingAccount = await this.accountRepository.findOne({
+      where: { email: body.email, password: body.password },
     });
+
+    if (!existingAccount) {
+      return false;
+    }
+
+    return true;
   }
 }

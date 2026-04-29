@@ -26,11 +26,11 @@ import {
 import { FileInterceptor } from '@nestjs/platform-express';
 
 interface BaseService<T = any> {
-  // list?(body: T): Promise<T>;
+  list?(body: T): Promise<T>;
   // find?(id: number): Promise<T>;
   // findOne?(body: T): Promise<T>;
   // search?(query: any): Promise<any>;
-  // create(body: T): Promise<T>;
+  create(body: T): Promise<T>;
   // createMany?(body: T[]): Promise<T>;
   // delete?(body: T): Promise<boolean>;
   // update?(body: T): Promise<T>;
@@ -51,17 +51,17 @@ export abstract class BaseController<T1 extends BaseService<any>, T2> {
     });
   }
 
-  // @Post(CREATE)
-  // async create(
-  //   @Body() body: T2,
-  //   @UploadedFile() file: Express.Multer.File,
-  //   @Req() req: Request,
-  //   @Res() res: Response,
-  // ) {
-  //   return res.status(200).json({
-  //     datas: await this.service.create(body),
-  //   });
-  // }
+  @Post(CREATE)
+  async create(
+    @Body() body: T2,
+    @UploadedFile() file: Express.Multer.File,
+    @Req() req: Request,
+    @Res() res: Response,
+  ) {
+    return res.status(200).json({
+      datas: await this.service.create(body),
+    });
+  }
 
   // @Post(DELETE)
   // async delete(@Body() body: T2, @Res() res: Response) {
@@ -127,13 +127,13 @@ export abstract class BaseController<T1 extends BaseService<any>, T2> {
   //   });
   // }
 
-  // @Post(LIST)
-  // async list(@Body() body: T2, @Res() res: Response) {
-  //   const result = await this.service.list(body);
-  //   return res.json({
-  //     datas: result,
-  //   });
-  // }
+  @Post(LIST)
+  async list(@Body() body: T2, @Res() res: Response) {
+    const result = await this.service.list(body);
+    return res.json({
+      datas: result,
+    });
+  }
 
   // @UseGuards(AuthGuard('token'))
   // @Post(CREATE_MANY)

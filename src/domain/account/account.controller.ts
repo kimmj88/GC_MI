@@ -13,4 +13,11 @@ export class AccountController extends BaseController<
   constructor(private readonly accountService: AccountService) {
     super(accountService, ACCOUNT);
   }
+
+  @Post('login')
+  async EditClan(@Body() body: any, @Res() res: Response) {
+    return res.status(200).json({
+      datas: await this.accountService.login(body),
+    });
+  }
 }

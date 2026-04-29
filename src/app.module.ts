@@ -7,6 +7,8 @@ import { APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core';
 import { AccessTokenInterceptor } from '@interceptor/accesstoken.interceptor';
 import { GlobalExceptionFilter } from '@filter/exception.filter';
 import { AccountModule } from '@domain/account/account.module';
+import { MovieModule } from '@domain/Movie/Movie.module';
+import { ScreenModule } from '@domain/Screen/Screen.module';
 
 @Module({
   imports: [
@@ -16,7 +18,8 @@ import { AccountModule } from '@domain/account/account.module';
     }),
     DatabaseModule,
     AccountModule,
-
+    MovieModule,
+    ScreenModule,
   ],
   controllers: [AppController],
   providers: [

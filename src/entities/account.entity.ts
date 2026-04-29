@@ -1,37 +1,23 @@
-// src/account/account.entity.ts
-import {
-  Entity,
-  PrimaryGeneratedColumn,
-  Column,
-  CreateDateColumn,
-  UpdateDateColumn,
-  OneToMany,
-  ManyToOne,
-  JoinColumn,
-  Unique,
-} from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import { Reservation } from './reservation.entity';
 
 @Entity('account')
-@Unique('UQ_ACCOUNT_EMAIL', ['email'])
 export class Account {
-  @PrimaryGeneratedColumn('increment')
+  @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: 'varchar', length: 100 })
-  name: string;
-
-  @Column({ type: 'varchar', length: 200, nullable: true })
-  nickname: string;
-
-  @Column({ type: 'varchar', length: 255 })
+  @Column({ unique: true })
   email: string;
 
-  @Column({ type: 'varchar', length: 128, nullable: true })
-  department: string;
+  @Column()
+  password: string;
 
-  @CreateDateColumn({ type: 'timestamptz' })
+  @Column()
+  name: string;
+
+  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   created_at: Date;
 
-  @UpdateDateColumn({ type: 'timestamptz' })
-  updated_at: Date;
+  @OneToMany(() => Reservation, (r) => r.account)
+  reservations: Reservation[];
 }

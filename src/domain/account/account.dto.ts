@@ -1,4 +1,3 @@
-// src/users/dto/create-user.dto.ts
 import { IsEmail, IsString, IsNumber, IsBoolean } from 'class-validator';
 
 export class AccountDto {
@@ -11,14 +10,8 @@ export class AccountDto {
   @IsEmail()
   email?: string;
 
-  @IsNumber()
-  systemrole_id: number;
-
   @IsString()
-  provider?: string;
-
-  @IsBoolean()
-  is_deleted?: boolean;
+  password?: string;
 }
 
 export class AccountSearchDto {
