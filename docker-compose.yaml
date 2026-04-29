@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:13
+    container_name: gc_mi_postgres
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: nimda
+      POSTGRES_DB: gc_mi_database
+    volumes:
+      - gc_mi_db_data:/var/lib/postgresql/data
+    ports:
+      - '5453:5432'
+
+volumes:
+  gc_mi_db_data:

@@ -1,0 +1,32 @@
+export const PROJECT = 'project';
+export const ARTIFACT = 'artifact';
+export const GROUP = 'group';
+export const CATEGORY = 'category';
+export const STATE = 'state';
+export const ACCOUNT = 'account';
+export const PROFILE = 'profile';
+export const ANALYSIS = 'analysis';
+export const PROJECTMEMBER = 'projectmember';
+export const SYSTEMROLE = 'systemrole';
+export const PERMISSION = 'permission';
+export const COMPANY = 'company';
+export const SOLUTION = 'solution';
+export const PRODUCT = 'product';
+export const MERCHANDISE = 'merchandise';
+export const SYSTEMPERMISSION = 'systempermission';
+export const PROJECTPERMISSION = 'projectpermission';
+export const PROJECTROLE = 'projectrole';
+export const DRAFT = 'draft';
+
+//Restful API event - ALL
+export const ALL = 'all';
+export const SEARCH = 'search';
+export const FIND = 'find';
+export const LIST = 'list';
+
+//Restful API event - POST
+export const CREATE = 'create';
+export const CREATE_MANY = 'create-many';
+export const DELETE = 'delete';
+export const UPDATE = 'update';
+export const UPDATES = 'updates';
