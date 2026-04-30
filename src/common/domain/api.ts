@@ -1,6 +1,8 @@
 export const ACCOUNT = 'account';
 export const MOVIE = 'movie';
 export const SCREEN = 'screen';
+export const SCREENING = 'screening';
+export const RESERVATION = 'reservation';
 
 //Restful API event - ALL
 export const ALL = 'all';

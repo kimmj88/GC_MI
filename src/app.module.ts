@@ -9,6 +9,9 @@ import { GlobalExceptionFilter } from '@filter/exception.filter';
 import { AccountModule } from '@domain/account/account.module';
 import { MovieModule } from '@domain/Movie/Movie.module';
 import { ScreenModule } from '@domain/Screen/Screen.module';
+import { ScreeningModule } from '@domain/Screening/Screening.module';
+import { Reservation } from './entities/reservation.entity';
+import { ReservationModule } from '@domain/Reservation/Reservation.module';
 
 @Module({
   imports: [
@@ -20,6 +23,8 @@ import { ScreenModule } from '@domain/Screen/Screen.module';
     AccountModule,
     MovieModule,
     ScreenModule,
+    ScreeningModule,
+    ReservationModule,
   ],
   controllers: [AppController],
   providers: [

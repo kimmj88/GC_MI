@@ -7,7 +7,6 @@ import { Screen } from 'src/entities/screen.entity';
 import { Seat } from 'src/entities/seat.entity';
 import { Screening } from 'src/entities/screening.entity';
 import { Reservation } from 'src/entities/reservation.entity';
-import { ReservationSeat } from 'src/entities/reservationseat.entity';
 @Module({
   imports: [
     TypeOrmModule.forRootAsync({
@@ -22,15 +21,7 @@ import { ReservationSeat } from 'src/entities/reservationseat.entity';
           host: configService.get<string>('DATABASE_HOST'),
           port: configService.get<number>('DATABASE_PORT'),
           database: configService.get<string>('DATABASE_NAME'),
-          entities: [
-            Account,
-            Movie,
-            Screen,
-            Seat,
-            Screening,
-            Reservation,
-            ReservationSeat,
-          ],
+          entities: [Account, Movie, Screen, Seat, Screening, Reservation],
           synchronize: true,
           timezone: 'Z',
         };

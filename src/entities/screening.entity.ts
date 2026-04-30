@@ -8,6 +8,7 @@ import {
 import { Movie } from './movie.entity';
 import { Screen } from './screen.entity';
 import { Reservation } from './reservation.entity';
+import { Seat } from './seat.entity';
 
 @Entity('screening')
 export class Screening {
