@@ -26,6 +26,7 @@ export class AccountService {
     return this.accountRepository.find({});
   }
 
+  // ## 회원가입 ##
   async create(body: AccountDto): Promise<Account> {
     const data = await this.accountRepository.save(body);
 
@@ -33,6 +34,7 @@ export class AccountService {
   }
 
   //Optional Service
+  // ## 로그인 ##
   async login(body: AccountDto): Promise<boolean> {
     const existingAccount = await this.accountRepository.findOne({
       where: { email: body.email, password: body.password },

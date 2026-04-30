@@ -9,6 +9,7 @@ export class ReservationService {
   @InjectRepository(Reservation)
   private reservationRepository: Repository<Reservation>;
 
+  // ## 좌석 예매 ##
   async create(body: ReservationDto): Promise<Reservation> {
     return await this.reservationRepository.save({
       account: { id: body.accountId },
@@ -17,6 +18,7 @@ export class ReservationService {
     });
   }
 
+  // ## 예매 내역 조회 ##
   async list(body: ReservationDto): Promise<Reservation[]> {
     const data: Reservation[] = await this.reservationRepository.find({
       where: { account: { id: body.accountId } },
